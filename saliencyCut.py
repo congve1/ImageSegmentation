@@ -12,6 +12,7 @@ def processImage(filename):
     img3i[idxs] = 0
     sal *= 255
     cv2.imwrite("{}process.jpg".format(filename),img3i)
+    cv2.imwrite("{}hc.jpg".format(filename),sal.astype(np.int8))
 
 def processImage1(filename):
     img3i = cv2.imread(filename)
