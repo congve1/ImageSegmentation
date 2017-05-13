@@ -1,0 +1,8 @@
+{% extends "main.html" %}
+{% block body %}
+    <p class="text-primary">分割图像</p>
+    <img src="/static/uploadImage/{{ filename }}" />
+    {% for class_name in class_names %}
+        <p><span class="text-primary"> 预测类名:{{ class_name }} </span></p>
+    {% endfor %}
+{% endblock %}
