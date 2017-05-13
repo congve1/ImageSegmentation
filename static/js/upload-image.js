@@ -35,7 +35,7 @@ $(document).ready(function (e) {
       processData: false,
       success: function(data)
       {
-          $("#loading").removeClass("progress");
+          $("#loading").removeClass("alert alert-info");
           $("#loading").addClass("alert alert-success");
           $("#loading").text("图片上传成功");
           $("#loading").fadeOut(1000,function(){

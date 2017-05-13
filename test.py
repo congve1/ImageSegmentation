@@ -14,7 +14,7 @@ def allowed_file(filename):
             filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
 @app.route('/',methods=['GET','POST'])
 def upload_file():
-    return render_template("main.html")
+    return render_template("index.html")
 @app.route('/segimage',methods=['POST'])
 def upload():
     file = request.files['file']
