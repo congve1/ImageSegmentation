@@ -8,8 +8,8 @@ def processImage(filename):
     img3f = img3i.astype(np.float32)
     img3f *= 1. / 255
     sal = SaliencyRC.GetHC(img3f)
-    idxs = np.where(sal < (sal.max() + sal.min()) / 4.96)
-    img3i[idxs] = 0
+    #idxs = np.where(sal < (sal.max() + sal.min()) / 4.96)
+    img3i[np.where(sal < (sal.max() + sal.min())/3)] = 0
     sal *= 255
     cv2.imwrite("{}process.jpg".format(filename),img3i)
     cv2.imwrite("{}hc.jpg".format(filename),sal.astype(np.int8))

@@ -29,8 +29,11 @@ def upload():
     #<p> 分类结果 </P>
     #<p>{}:{}</p>
     #""".format(filename,class_names[0],probs[0])
-    return render_template("prediction.html",filename="{}process.jpg".format(filename),class_names=class_names,
-                           probs=probs)
+    return render_template("prediction.html",segFile="static/uploadImage/{}process.jpg".format(filename),
+                            hcFile="static/uploadImage/{}hc.jpg".format(filename),
+                            rawFile="static/uploadImage/{}".format(filename),
+                           class_names=class_names
+                           )
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
