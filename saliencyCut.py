@@ -14,10 +14,10 @@ def processImage(filename):
     I = [np.min(idxs[0]),np.max(idxs[0])]
     J = [np.min(idxs[1]),np.max(idxs[1])]
     imgBBox = img3i.copy()
-    imgBBox[I[0]:I[0]+1,J[0]:J[1]+1] = [255,0,0]
-    imgBBox[I[0]:I[1]+1,J[1]:J[1]+1] = [255,0,0]
-    imgBBox[I[1]:I[1]+1,J[0]:J[1]+1] = [255,0,0]
-    imgBBox[I[0]:I[1]+1,J[0]:J[0]+1] = [255,0,0]
+    imgBBox[I[0]:I[0]+1,J[0]:J[1]+1] = [0,0,255]
+    imgBBox[I[0]:I[1]+1,J[1]:J[1]+1] = [0,0,255]
+    imgBBox[I[1]:I[1]+1,J[0]:J[1]+1] = [0,0,255]
+    imgBBox[I[0]:I[1]+1,J[0]:J[0]+1] = [0,0,255]
     resImg = np.zeros(img3i.shape,img3i.dtype)
     resImg[I[0]:I[1],J[0]:J[1]] = img3i[I[0]:I[1],J[0]:J[1]]
     resImg[np.where(sal < (sal.max() + sal.min())/ 4)] = 0
