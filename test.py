@@ -6,12 +6,11 @@ import os
 from werkzeug.utils import  secure_filename
 app = Flask(__name__)
 UPLOAD_FOLDER = "/home/clw/PycharmProjects/test/static/uploadImage"
-ALLOWED_EXTENSIONS = set(['txt','pdf','png','jpg','jpeg','gif'])
+ALLOWED_EXTENSIONS = set(['png','jpg','jpeg'])
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
-    return '.' in filename and \
-            filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+    return '.' in filename and  filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
 @app.route('/',methods=['GET','POST'])
 def upload_file():
     return render_template("index.html")
@@ -30,13 +29,12 @@ def upload():
     #<p>{}:{}</p>
     #""".format(filename,class_names[0],probs[0])
     return render_template("prediction.html",segFile="static/uploadImage/{}process.jpg".format(filename),
+                            bboxFile="static/uploadImage/{}bbox.jpg".format(filename),
                             hcFile="static/uploadImage/{}hc.jpg".format(filename),
                             rawFile="static/uploadImage/{}".format(filename),
                            class_names=class_names
                            )
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == '__main__':
     app.run()
