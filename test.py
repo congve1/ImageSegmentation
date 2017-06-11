@@ -22,6 +22,7 @@ def upload():
     file.save(full_filename)
     processImage(full_filename)
     class_names,probs= inference(vgg,"{}process.jpg".format(full_filename))
+    print(class_names)
     #return """
     #<html>
     #<img src="/static/uploadImage/{}process.jpg"/>
@@ -35,6 +36,12 @@ def upload():
                            class_names=class_names
                            )
 
-
+@app.after_request
+def add_header(r):
+    r.headers['Cache-Control'] = 'no-cache,no-store,must-revalidate'
+    r.headers['Pragma'] = 'no-cache'
+    r.headers['Expires'] = '0'
+    r.headers['Cache-Control'] = 'public,max-age=0'
+    return  r
 if __name__ == '__main__':
     app.run()
